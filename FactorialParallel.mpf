@@ -1,0 +1,44 @@
+
+Program Factorial;
+
+Var
+    i,j,k,n,Temp1,Temp2:Integer;
+    Temp3:Real;
+    Processor:Array[0..1000] Of Real;
+
+Function POW(Number,Index:Integer):Integer;
+
+Var
+    l,Temp4:Integer;
+Begin 
+    Temp4:=1;
+    For l:=1 To Index Do
+        Temp4:=Temp4*Number;
+    POW:=Temp4;
+End;
+
+Begin
+     Writeln(' ');
+     Write(' How Much Is ');
+     Read(n);
+     Write(' Factorial ?');
+     Writeln(' ');
+     Temp3:=Ln(n)/Ln(2);
+     If Temp3-Trunc(Temp3)=0 Then
+          Temp1:=Trunc(Temp3)
+     else
+          Temp1:=Trunc(Temp3)+1;
+     Temp2:=Trunc(n/2);
+     For k:=0 To n-1 Do 
+          Processor[k]:=k+1;
+     
+     For j:=0 To Temp1-1 DO
+          Forall i:=0 TO Temp2-1 Do 
+               If i mod POW(2,j) = 0 Then
+                     if (POW(2,j)+(2*i))< n Then
+                          Processor[2*i]:=Processor[2*i]*Processor[POW(2,j)+(2*i)];
+     
+     Writeln(' ');
+     Writeln(' ',n,' Factorial Is : ',Processor[0]);    
+
+End.
